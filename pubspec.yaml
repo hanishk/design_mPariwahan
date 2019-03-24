@@ -45,7 +45,12 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
   assets:
-    - assets/pixels.jpeg
+  - assets/pixels.jpeg
+  - assets/dlmock.jpg
+  - assets/citizenreport.png
+  - assets/nearestrto.jpg
+  - assets/taxreceipt.jpg
+  - assets/trafficstatus.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
@@ -58,10 +63,20 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+  - family: hotel
+    fonts:
+    - asset: assets/fonts/ic_hotels.ttf
+  - family: notification
+    fonts:
+    - asset: assets/fonts/ic_notification.ttf
+  - family: bus
+    fonts:
+    - asset: assets/fonts/ic_bus.ttf
+  - family: idcard
+    fonts:
+    - asset: assets/fonts/ic_idcard.ttf
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
@@ -72,3 +87,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
+

@@ -40,7 +40,11 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               Card(
                 elevation: 0.0,
-                child: Icon(icon),
+                child: Icon(
+                  icon,
+                  color: Colors.blue,
+                  size: 40.0,
+                ),
               ),
             ],
           ),
@@ -65,7 +69,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black54,
+        backgroundColor: Colors.black,
         title: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +87,9 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.directions_bus), onPressed: () {}),
-          IconButton(icon: Icon(Icons.notifications), onPressed: () {}),
+          IconButton(
+              icon: Icon(IconData(0xe900, fontFamily: 'notification')),
+              onPressed: () {}),
         ],
         leading: IconButton(
             icon: Icon(Icons.short_text),
@@ -234,15 +240,15 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Container(
-              height: 120.0,
+              height: 140.0,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  MyList('assets/pixels.jpeg', "DL Mock Test"),
-                  MyList('assets/pixels.jpeg', "Tax Receipt"),
-                  MyList('assets/pixels.jpeg', "Traffic Status"),
+                  MyList('assets/dlmock.jpg', "DL Mock Test"),
+                  MyList('assets/taxreceipt.jpg', "Tax Receipt"),
+                  MyList('assets/trafficstatus.jpg', "Traffic Status"),
                   MyList('assets/pixels.jpeg', "Citizen Report"),
-                  MyList('assets/pixels.jpeg', "Nearest RTO"),
+                  MyList('assets/nearestrt.jpg', "Nearest RTO"),
                 ],
               )),
           Divider(
@@ -263,7 +269,8 @@ class _HomePageState extends State<HomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  rcInfo(Icons.calendar_today, "Temporary Registration"),
+                  rcInfo(IconData(0xe900, fontFamily: 'hotel'),
+                      "Temporary Registration"),
                   rcInfo(Icons.info, "Permanent Registration"),
                   rcInfo(Icons.short_text, "Renewal Of Registration"),
                   rcInfo(Icons.zoom_out_map, "Duplicate RC"),
