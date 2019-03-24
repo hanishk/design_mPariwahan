@@ -8,19 +8,22 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  Widget services(Color color, String text) {
-    return Expanded(
+  Widget MyList(String imageVal, String text) {
+    return Container(
+      width: 170.0,
       child: Column(
         children: <Widget>[
           Card(
-            color: color,
-            child: Text("card"),
+            elevation: 0.0,
+            child: Image.asset(imageVal),
           ),
-          Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 6.0),
+          ),
           Text(
             text,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          )
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0),
+          ),
         ],
       ),
     );
@@ -37,19 +40,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-  }
-
-  Widget flatbutton(String text, IconData icon, Function fun) {
-    return FlatButton.icon(
-        onPressed: fun,
-        icon: Icon(
-          icon,
-          size: 10.0,
-        ),
-        label: Text(
-          text,
-          style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold),
-        ));
   }
 
   @override
@@ -152,29 +142,53 @@ class _HomePageState extends State<HomePage> {
                 height: 200.0,
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      begin: Alignment.bottomLeft,
+                        begin: Alignment.bottomLeft,
                         end: Alignment.bottomRight,
                         colors: [Colors.teal[800], Colors.teal[100]])),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 12.0),
+                    ),
                     Text(
                       'mParivahan',
                       style: TextStyle(
-                          fontSize: 30.0, fontWeight: FontWeight.bold),
+                          fontSize: 20.0, fontWeight: FontWeight.bold),
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        flatbutton(
-                            "Get RC/DC Details", Icons.calendar_today, () {}),
-                        flatbutton(
-                            "Create Virtual RC/DC", Icons.calendar_today, () {}),
+                        Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 5.0, vertical: 10.0)),
+                        Icon(
+                          Icons.calendar_today,
+                          size: 10.0,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 2.0),
+                        ),
+                        Text(
+                          "Get RC/DC Details | ",
+                          style: TextStyle(fontSize: 10.0),
+                        ),
+                        Icon(
+                          Icons.calendar_today,
+                          size: 10.0,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 2.0),
+                        ),
+                        Text(
+                          "Get RC/DC Details",
+                          style: TextStyle(fontSize: 10.0),
+                        ),
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: EdgeInsets.only(top: 64.0),
                       child: RaisedButton(
                         elevation: 1.0,
                         onPressed: () {},
@@ -191,7 +205,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16.0),
             child: Text(
               "mParivahan Services",
               style: TextStyle(
@@ -200,13 +214,18 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.grey[700]),
             ),
           ),
-          Row(
-            children: <Widget>[
-              services(Colors.grey, "DL Mock Test"),
-              services(Colors.grey, "Tax Receipt"),
-              services(Colors.grey, "Traffic Status"),
-            ],
-          ),
+          Container(
+              height: 120.0,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  MyList('assets/pixels.jpeg', "DL Mock Test"),
+                  MyList('assets/pixels.jpeg', "Tax Receipt"),
+                  MyList('assets/pixels.jpeg', "Traffic Status"),
+                  MyList('assets/pixels.jpeg', "Citizen Report"),
+                  MyList('assets/pixels.jpeg', "Nearest RTO"),
+                ],
+              )),
           Divider(
             color: Colors.grey,
           ),
@@ -223,8 +242,8 @@ class _HomePageState extends State<HomePage> {
               child: Wrap(
                 children: <Widget>[
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
+//                    crossAxisAlignment: CrossAxisAlignment.center,
+//                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       info(Icons.calendar_today, "Temporary Registration"),
                       info(Icons.calendar_today, "Permanent Registration"),
