@@ -29,14 +29,33 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget info(IconData icon, String text) {
-    return Expanded(
+  Widget rcInfo(IconData icon, String text) {
+    return Container(
+      width: 100.0,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Card(
-            child: Icon(icon),
+          Wrap(
+            children: <Widget>[
+              Card(
+                elevation: 0.0,
+                child: Icon(icon),
+              ),
+            ],
           ),
-          Text(text)
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 6.0),
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Text(
+                text,
+                style: TextStyle(fontSize: 14.0),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -237,24 +256,78 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.grey[700]),
           ),
           Container(
-            height: 150.0,
-            child: Center(
-              child: Wrap(
+              height: 120.0,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  Row(
-//                    crossAxisAlignment: CrossAxisAlignment.center,
-//                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      info(Icons.calendar_today, "Temporary Registration"),
-                      info(Icons.calendar_today, "Permanent Registration"),
-                      info(Icons.calendar_today, "Renewal of Registration"),
-                      info(Icons.calendar_today, "Duplicate RC"),
-                      info(Icons.calendar_today, "No Objection Certificate"),
-                    ],
-                  ),
+                  rcInfo(Icons.calendar_today, "Temporary Registration"),
+                  rcInfo(Icons.info, "Permanent Registration"),
+                  rcInfo(Icons.short_text, "Renewal Of Registration"),
+                  rcInfo(Icons.zoom_out_map, "Duplicate RC"),
+                  rcInfo(Icons.directions_bus, "No Objection Certificate"),
+                  rcInfo(Icons.directions_bus, "HP Endorsement"),
+                  rcInfo(Icons.directions_bus, "HP Termination"),
+                  rcInfo(Icons.directions_bus, "Address Change"),
+                  rcInfo(Icons.directions_bus, "Reassign-ment"),
+                  rcInfo(Icons.directions_bus, "Certificate Issues"),
                 ],
-              ),
+              )),
+          Divider(
+            color: Colors.grey,
+          ),
+          Text(
+            "DL Information",
+            style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey[700]),
+          ),
+          Container(
+              height: 140.0,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  rcInfo(Icons.calendar_today, "Learner's DL"),
+                  rcInfo(Icons.info, "Permanent DL"),
+                  rcInfo(Icons.short_text, "Renewable Of DL"),
+                  rcInfo(Icons.zoom_out_map, "Duplicate DL"),
+                  rcInfo(Icons.directions_bus, "Addition Of Class"),
+                  rcInfo(Icons.directions_bus, "Internation Driving Permit"),
+                  rcInfo(Icons.directions_bus, "License Related Fees"),
+                ],
+              )),
+          Divider(
+            color: Colors.grey,
+          ),
+          Text(
+            "How  to use",
+            style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey[700]),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 18.0),
+            height: 140.0,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                MyList("assets/pixels.jpeg", "Why mParivahan"),
+                MyList("assets/pixels.jpeg", "How To Use"),
+              ],
             ),
+          ),
+          Divider(
+            color: Colors.grey,
+          ),
+          Container(
+            height: 100.0,
+            child: Image.asset(
+              'assets/pixels.jpeg',
+              fit: BoxFit.fitWidth,
+            ),
+            color: Colors.grey,
           )
         ],
       ),
