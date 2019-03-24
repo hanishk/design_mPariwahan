@@ -248,12 +248,15 @@ class _HomePageState extends State<HomePage> {
           Divider(
             color: Colors.grey,
           ),
-          Text(
-            "RC Information",
-            style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[700]),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Text(
+              "RC Information",
+              style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[700]),
+            ),
           ),
           Container(
               height: 120.0,
@@ -275,12 +278,15 @@ class _HomePageState extends State<HomePage> {
           Divider(
             color: Colors.grey,
           ),
-          Text(
-            "DL Information",
-            style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[700]),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Text(
+              "DL Information",
+              style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[700]),
+            ),
           ),
           Container(
               height: 140.0,
@@ -299,12 +305,15 @@ class _HomePageState extends State<HomePage> {
           Divider(
             color: Colors.grey,
           ),
-          Text(
-            "How  to use",
-            style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[700]),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Text(
+              "How  to use",
+              style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[700]),
+            ),
           ),
           Container(
             padding: EdgeInsets.symmetric(vertical: 18.0),
