@@ -8,6 +8,50 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
+  Widget services(Color color, String text) {
+    return Expanded(
+      child: Column(
+        children: <Widget>[
+          Card(
+            color: color,
+            child: Text("card"),
+          ),
+          Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
+          Text(
+            text,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget info(IconData icon, String text) {
+    return Expanded(
+      child: Column(
+        children: <Widget>[
+          Card(
+            child: Icon(icon),
+          ),
+          Text(text)
+        ],
+      ),
+    );
+  }
+
+  Widget flatbutton(String text, IconData icon, Function fun) {
+    return FlatButton.icon(
+        onPressed: fun,
+        icon: Icon(
+          icon,
+          size: 10.0,
+        ),
+        label: Text(
+          text,
+          style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,41 +87,45 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      FlatButton.icon(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.calendar_today,
-                            size: 10.0,
-                          ),
-                          label: Text(
-                            'RC',
-                            style: TextStyle(fontSize: 10.0),
-                          )),
-                      VerticalDivider(
-                        color: Colors.black54,
-                      ),
-                      FlatButton.icon(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.calendar_today,
-                            size: 10.0,
-                          ),
-                          label: Text(
-                            'DL',
-                            style: TextStyle(fontSize: 10.0),
-                          )),
-                      VerticalDivider(
-                        color: Colors.black54,
-                      ),
-                    ],
+                  ButtonTheme(
+                    minWidth: 20.0,
+                    child: Row(
+                      children: <Widget>[
+                        FlatButton.icon(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.calendar_today,
+                              size: 8.0,
+                            ),
+                            label: Text(
+                              'RC',
+                              style: TextStyle(fontSize: 8.0),
+                            )),
+                        VerticalDivider(
+                          color: Colors.black54,
+                        ),
+                        FlatButton.icon(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.calendar_today,
+                              size: 8.0,
+                            ),
+                            label: Text(
+                              'DL',
+                              style: TextStyle(fontSize: 8.0),
+                            )),
+                        VerticalDivider(
+                          color: Colors.black54,
+                        ),
+                      ],
+                    ),
                   ),
                   Expanded(
                     flex: 1,
                     child: TextFormField(
                       decoration: InputDecoration(
                           border: InputBorder.none,
+                          hintStyle: TextStyle(fontSize: 10.0),
                           hintText: 'Enter vehicle number to get details'),
                     ),
                   ),
@@ -104,6 +152,8 @@ class _HomePageState extends State<HomePage> {
                 height: 200.0,
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
+                      begin: Alignment.bottomLeft,
+                        end: Alignment.bottomRight,
                         colors: [Colors.teal[800], Colors.teal[100]])),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -117,28 +167,10 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        FlatButton.icon(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.calendar_today,
-                              size: 10.0,
-                            ),
-                            label: Text(
-                              'Get RC/DL Details',
-                              style: TextStyle(
-                                  fontSize: 10.0, fontWeight: FontWeight.bold),
-                            )),
-                        FlatButton.icon(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.calendar_today,
-                              size: 10.0,
-                            ),
-                            label: Text(
-                              'Create Virtual RC/DL',
-                              style: TextStyle(
-                                  fontSize: 10.0, fontWeight: FontWeight.bold),
-                            )),
+                        flatbutton(
+                            "Get RC/DC Details", Icons.calendar_today, () {}),
+                        flatbutton(
+                            "Create Virtual RC/DC", Icons.calendar_today, () {}),
                       ],
                     ),
                     Padding(
@@ -170,48 +202,9 @@ class _HomePageState extends State<HomePage> {
           ),
           Row(
             children: <Widget>[
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Card(
-                      color: Colors.grey,
-                      child: Text("card"),
-                    ),
-                    Text(
-                      "DL Mock Test",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Card(
-                      color: Colors.grey,
-                      child: Text("card"),
-                    ),
-                    Text(
-                      "Tax Receipt",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Card(
-                      color: Colors.grey,
-                      child: Text("card"),
-                    ),
-                    Text(
-                      "Traffic  Status",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-              ),
+              services(Colors.grey, "DL Mock Test"),
+              services(Colors.grey, "Tax Receipt"),
+              services(Colors.grey, "Traffic Status"),
             ],
           ),
           Divider(
@@ -226,7 +219,6 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             height: 150.0,
-            color: Colors.grey,
             child: Center(
               child: Wrap(
                 children: <Widget>[
@@ -234,56 +226,11 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Expanded(
-                        child: Column(
-                          children: <Widget>[
-                            Card(
-                              child: Icon(Icons.calendar_today),
-                            ),
-                            Text("Temporary Registration")
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: <Widget>[
-                            Card(
-                              child: Icon(Icons.calendar_today),
-                            ),
-                            Text("Permanent Registration")
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: <Widget>[
-                            Card(
-                              child: Icon(Icons.calendar_today),
-                            ),
-                            Text("Renewal of Registration")
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: <Widget>[
-                            Card(
-                              child: Icon(Icons.calendar_today),
-                            ),
-                            Text("Duplicate RC")
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: <Widget>[
-                            Card(
-                              child: Icon(Icons.calendar_today),
-                            ),
-                            Text("No Objection Certificate")
-                          ],
-                        ),
-                      ),
+                      info(Icons.calendar_today, "Temporary Registration"),
+                      info(Icons.calendar_today, "Permanent Registration"),
+                      info(Icons.calendar_today, "Renewal of Registration"),
+                      info(Icons.calendar_today, "Duplicate RC"),
+                      info(Icons.calendar_today, "No Objection Certificate"),
                     ],
                   ),
                 ],
