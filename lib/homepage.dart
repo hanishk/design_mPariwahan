@@ -65,6 +65,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget flatbuttons(String text, IconData icon, Function fun) {
+    return FlatButton.icon(
+        onPressed: fun,
+        icon: Icon(
+          icon,
+          size: 8.0,
+        ),
+        label: Text(
+          text,
+          style: TextStyle(fontSize: 8.0),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,29 +119,11 @@ class _HomePageState extends State<HomePage> {
                     minWidth: 20.0,
                     child: Row(
                       children: <Widget>[
-                        FlatButton.icon(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.calendar_today,
-                              size: 8.0,
-                            ),
-                            label: Text(
-                              'RC',
-                              style: TextStyle(fontSize: 8.0),
-                            )),
+                        flatbuttons('RC', Icons.calendar_today, () {}),
                         VerticalDivider(
                           color: Colors.black54,
                         ),
-                        FlatButton.icon(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.calendar_today,
-                              size: 8.0,
-                            ),
-                            label: Text(
-                              'DL',
-                              style: TextStyle(fontSize: 8.0),
-                            )),
+                        flatbuttons('DL', Icons.calendar_today, () {}),
                         VerticalDivider(
                           color: Colors.black54,
                         ),
@@ -164,12 +159,13 @@ class _HomePageState extends State<HomePage> {
           Column(
             children: <Widget>[
               Container(
-                height: 200.0,
+                height: 160.0,
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.bottomLeft,
                         end: Alignment.bottomRight,
                         colors: [Colors.teal[800], Colors.teal[100]])),
+
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
@@ -213,9 +209,9 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 64.0),
+                      padding: EdgeInsets.only(top: 32.0),
                       child: RaisedButton(
-                        elevation: 1.0,
+                        elevation: 2.0,
                         onPressed: () {},
                         color: Colors.blue,
                         child: Text(
@@ -244,11 +240,11 @@ class _HomePageState extends State<HomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  MyList('assets/dlmock.jpg', "DL Mock Test"),
-                  MyList('assets/taxreceipt.jpg', "Tax Receipt"),
-                  MyList('assets/trafficstatus.jpg', "Traffic Status"),
-                  MyList('assets/pixels.jpeg', "Citizen Report"),
-                  MyList('assets/nearestrt.jpg', "Nearest RTO"),
+                  MyList('assets/images/dlmock.jpg', "DL Mock Test"),
+                  MyList('assets/images/computer.png', "Tax Receipt"),
+                  MyList('assets/images/citizen.png', "Traffic Status"),
+                  MyList('assets/images/citizen.png', "Citizen Report"),
+                  MyList('assets/images/computer.png', "Nearest RTO"),
                 ],
               )),
           Divider(
@@ -257,7 +253,8 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.only(left: 16.0),
             child: Text(
-              "RC Information",
+              "RC Info"
+                  "rmation",
               style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
@@ -273,9 +270,9 @@ class _HomePageState extends State<HomePage> {
                       "Temporary Registration"),
                   rcInfo(Icons.info, "Permanent Registration"),
                   rcInfo(Icons.short_text, "Renewal Of Registration"),
-                  rcInfo(Icons.zoom_out_map, "Duplicate RC"),
+                  rcInfo(Icons.zoom_out_map, "Duplicate   RC"),
                   rcInfo(Icons.directions_bus, "No Objection Certificate"),
-                  rcInfo(Icons.directions_bus, "HP Endorsement"),
+                  rcInfo(Icons.directions, "HPEndorsement"),
                   rcInfo(Icons.directions_bus, "HP Termination"),
                   rcInfo(Icons.directions_bus, "Address Change"),
                   rcInfo(Icons.directions_bus, "Reassign-ment"),
@@ -300,13 +297,13 @@ class _HomePageState extends State<HomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  rcInfo(Icons.calendar_today, "Learner's DL"),
+                  rcInfo(Icons.calendar_today, "Learner's   DL"),
                   rcInfo(Icons.info, "Permanent DL"),
                   rcInfo(Icons.short_text, "Renewable Of DL"),
-                  rcInfo(Icons.zoom_out_map, "Duplicate DL"),
+                  rcInfo(Icons.zoom_out_map, "Duplicate  DL"),
                   rcInfo(Icons.directions_bus, "Addition Of Class"),
-                  rcInfo(Icons.directions_bus, "Internation Driving Permit"),
-                  rcInfo(Icons.directions_bus, "License Related Fees"),
+                  rcInfo(Icons.directions_bus, "Internation Driving"),
+                  rcInfo(Icons.directions_bus, "License   Fees"),
                 ],
               )),
           Divider(
@@ -329,8 +326,8 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                MyList("assets/pixels.jpeg", "Why mParivahan"),
-                MyList("assets/pixels.jpeg", "How To Use"),
+                MyList("assets/images/pixels.jpeg", "Why mParivahan"),
+                MyList("assets/images/pixels.jpeg", "How To Use"),
               ],
             ),
           ),
@@ -340,7 +337,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             height: 100.0,
             child: Image.asset(
-              'assets/pixels.jpeg',
+              'assets/images/pixels.jpeg',
               fit: BoxFit.fitWidth,
             ),
             color: Colors.grey,

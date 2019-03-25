@@ -45,12 +45,12 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
   assets:
-  - assets/pixels.jpeg
-  - assets/dlmock.jpg
-  - assets/citizenreport.png
-  - assets/nearestrto.jpg
-  - assets/taxreceipt.jpg
-  - assets/trafficstatus.jpg
+  - assets/images/pixels.jpeg
+  - assets/images/dlmock.jpg
+  - assets/images/computer.png
+  - assets/images/citizen.png
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
