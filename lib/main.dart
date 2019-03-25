@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'mPariwahan',
+      theme: ThemeData(canvasColor: Colors.white),
       home: HomePage(),
     );
   }

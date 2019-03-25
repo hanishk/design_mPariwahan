@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,7 +16,10 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           Card(
             elevation: 0.0,
-            child: Image.asset(imageVal),
+            child: Image.asset(
+              imageVal,
+              colorBlendMode: BlendMode.multiply,
+            ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 6.0),
@@ -39,6 +43,7 @@ class _HomePageState extends State<HomePage> {
           Wrap(
             children: <Widget>[
               Card(
+                color: Colors.transparent,
                 elevation: 0.0,
                 child: Icon(
                   icon,
@@ -56,6 +61,8 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(left: 10.0),
               child: Text(
                 text,
+                textAlign: TextAlign.center,
+                softWrap: true,
                 style: TextStyle(fontSize: 14.0),
               ),
             ),
@@ -99,7 +106,15 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.directions_bus), onPressed: () {}),
+          GestureDetector(
+            onTap: () {},
+            child: Image.asset(
+              "assets/images/ambulance.png",
+//              fit: BoxFit.cover,
+              color: Colors.white,
+            ),
+          ),
+//          IconButton(icon: Icon(Icons.directions_bus), onPressed: () {}),
           IconButton(
               icon: Icon(IconData(0xe900, fontFamily: 'notification')),
               onPressed: () {}),
@@ -109,45 +124,56 @@ class _HomePageState extends State<HomePage> {
             onPressed: () => _scaffoldKey.currentState.openDrawer()),
         bottom: PreferredSize(
             child: Container(
-              height: 50.0,
-              margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              decoration: BoxDecoration(color: Colors.white),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  ButtonTheme(
-                    minWidth: 20.0,
-                    child: Row(
-                      children: <Widget>[
-                        flatbuttons('RC', Icons.calendar_today, () {}),
-                        VerticalDivider(
-                          color: Colors.black54,
-                        ),
-                        flatbuttons('DL', Icons.calendar_today, () {}),
-                        VerticalDivider(
-                          color: Colors.black54,
-                        ),
-                      ],
+              decoration: BoxDecoration(
+                color: Colors.white,
+                gradient: LinearGradient(
+                  colors: [Colors.black, Colors.white],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+              child: Container(
+                margin: EdgeInsets.only(left: 10.0, right: 10.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    ButtonTheme(
+                      minWidth: 20.0,
+                      child: Row(
+                        children: <Widget>[
+                          flatbuttons('RC', Icons.calendar_today, () {}),
+                          VerticalDivider(
+                            color: Colors.black54,
+                          ),
+                          flatbuttons('DL', Icons.calendar_today, () {}),
+                          VerticalDivider(
+                            color: Colors.black54,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintStyle: TextStyle(fontSize: 10.0),
-                          hintText: 'Enter vehicle number to get details'),
+                    Expanded(
+                      flex: 1,
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintStyle: TextStyle(fontSize: 10.0),
+                            hintText: 'Enter vehicle number to get details'),
+                      ),
                     ),
-                  ),
-                  Container(
-                    color: Colors.blue,
-                    child: IconButton(
-                      icon: Icon(Icons.search),
-                      onPressed: () {},
-                      color: Colors.white,
-                    ),
-                  )
-                ],
+                    Container(
+                      color: Colors.blue,
+                      child: IconButton(
+                        icon: Icon(Icons.search),
+                        onPressed: () {},
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             preferredSize: Size.fromHeight(60.0)),
@@ -161,11 +187,15 @@ class _HomePageState extends State<HomePage> {
               Container(
                 height: 160.0,
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.bottomLeft,
-                        end: Alignment.bottomRight,
-                        colors: [Colors.teal[800], Colors.teal[100]])),
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/background.jpg'),
+                        fit: BoxFit.cover)
 
+//                    gradient: LinearGradient(
+//                        begin: Alignment.bottomLeft,
+//                        end: Alignment.bottomRight,
+//                        colors: [Colors.teal[800], Colors.teal[100]])
+                    ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
